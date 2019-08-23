@@ -1,8 +1,6 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "shell.h"
 
-int main (int ac, int av)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *buff = NULL;
         size_t buff_size = 0;
@@ -15,7 +13,8 @@ int main (int ac, int av)
                 if (chara == -1)
                 {
                         free(buff);
-                        return (-1);
+                        return (EXIT_FAILURE);
                 }
 	}
+	return (EXIT_SUCCESS);
 }
