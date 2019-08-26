@@ -31,30 +31,28 @@ int _strcmp(char *s1, char *s2)
  */
 char *_strdup(char *str)
 {
-	char *p_str;
-	int index, len;
+	int i;
+	int j;
+	int strlen = 0;
+	char *a = NULL;
 
 	if (str == NULL)
 	{
 		return (NULL);
 	}
-	len = 0;
-	while (str[len] != '\0')
+	for (j = 0; str[j] != '\0'; j++)
 	{
-		len++;
+		strlen++;
 	}
-	len = len + 1;
-	p_str = malloc(sizeof(char) * len);
-	if (p_str == NULL)
+	a = malloc(sizeof(char) * (strlen + 1));
+	if (a == NULL)
 	{
 		return (NULL);
 	}
-	index = 0;
-	while (str[index] != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		p_str[index] = str[index];
-		index++;
+		a[i] = str[i];
 	}
-	p_str[index] = '\0';
-	return (p_str);
+	a[i] = '\0';
+	return (a);
 }
