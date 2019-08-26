@@ -16,11 +16,16 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		if (chara == -1)
 		{
 			free(buff);
-			return (EXIT_SUCCESS);
+			return (EXIT_FAILURE);
 		}
 		args = strtokenizer(buff, " \n");
 		childPid = fork();
-		if (childPid == 0)
+		if (childPid == -1)
+		{
+			perror("Error:");
+			return (EXIT_FAILURE);
+		}
+		else if (childPid == 0)
 		{
 			execve(args[0], args, NULL);
 		}
