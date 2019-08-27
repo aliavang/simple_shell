@@ -22,10 +22,8 @@ int tokcount(char *s, const char *delim)
 	{
 		count++;
 		token = strtok(NULL, delim);
-		printf("Word stored in token after passing NULL: %s\n", token);
 	}
 	count++;
-	printf("Count: %d\n", count);
 	free(s_cpy);
 	return (count);
 }
@@ -63,20 +61,4 @@ char **strtokenizer(char *s, const char *delim)
 	}
 	arr[index] = NULL;
 	return (arr);
-}
-
-int main(void)
-{
-	char str[] = "/bin/ls -l";
-	char **args;
-	int i;
-
-	args = strtokenizer(str, " \n");
-	i = 0;
-	while (args[i] != NULL)
-	{
-		printf("%s\n", args[i]);
-		i++;
-	}
-	return (EXIT_SUCCESS);
 }
