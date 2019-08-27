@@ -1,8 +1,9 @@
 #include "shellbacca.h"
 
-void _env(char **env)
+void _env(void)
 {
         int i;
+	char **env = environ;
 
         for (i = 0; env[i] != NULL; i++)
         {
