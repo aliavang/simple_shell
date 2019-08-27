@@ -12,7 +12,7 @@ void _env(void)
 
 	for (i = 0; env[i] != NULL; i++)
 	{
-		write(STDOUT_FILENO, env[i], strlen(env[i]));
+		write(STDOUT_FILENO, env[i], _strlen(env[i]));
 		_putchar('\n');
 	}
 }
