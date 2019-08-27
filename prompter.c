@@ -7,20 +7,20 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
         ssize_t chara;
 	char **args;
 	pid_t childPid;
-	int status;
+	int status, i = 0;
 
 	while (1)
 	{
-		write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 27);
+		if (isatty(STDIN_FILENO) == 1)
+			write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 27);
 		chara = getline(&buff, &buff_size, stdin);
 		if (chara == -1)
 		{
 			free(buff);
-			_putchar('\n');
 			return (EXIT_SUCCESS);
 		}
 		if (_strcmp(buff, "env\n") == 0)
-			_env(env);
+			_env();
 		if (_strcmp(buff, "exit\n") == 0)
 			break;
 		args = strtokenizer(buff, " \n");
@@ -28,6 +28,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		if (childPid == 0)
 		{
 			execve(args[0], args, NULL);
+			exit (1);
 		}
 		else
 		{
@@ -35,6 +36,5 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		}
 	}
 	free(buff);
-	_putchar('\n');
 	return (EXIT_SUCCESS);
 }
