@@ -1,22 +1,14 @@
-#include "shell.h"
+#include "shellbacca.h"
 
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
 {
 	char *buff = NULL;
         size_t buff_size = 0;
         ssize_t chara;
+	char **args;
+	pid_t childPid;
+	int status;
 
-<<<<<<< Updated upstream
-        while (1)
-        {
-		write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 28);
-                chara = getline(&buff, &buff_size, stdin);
-                if (chara == -1)
-                {
-                        free(buff);
-                        return (EXIT_FAILURE);
-                }
-=======
 	while (1)
 	{
 		write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 27);
@@ -24,9 +16,13 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		if (chara == -1)
 		{
 			free(buff);
-			_putchar("\n");
+			_putchar('\n');
 			return (EXIT_SUCCESS);
 		}
+		if (_strcmp(buff, "env\n") == 0)
+			_env(env);
+		if (_strcmp(buff, "exit\n") == 0)
+			break;
 		args = strtokenizer(buff, " \n");
 		childPid = fork();
 		if (childPid == 0)
@@ -37,8 +33,8 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		{
 			wait(&status);
 		}
->>>>>>> Stashed changes
 	}
-	_putchar("\n");
+	free(buff);
+	_putchar('\n');
 	return (EXIT_SUCCESS);
 }
