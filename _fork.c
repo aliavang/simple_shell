@@ -10,6 +10,7 @@ int _fork(char *path, char **args)
 {
 	pid_t childPid;
 	int status;
+	int exit_status;
 
 	childPid = fork();
 	if (childPid == -1)
@@ -20,11 +21,13 @@ int _fork(char *path, char **args)
 	else if (childPid == 0)
 	{
 		execve(path, args, NULL);
-		exit(1);
+		exit (1);
 	}
 	else
 	{
 		wait(&status);
 	}
-	return (EXIT_SUCCESS);
+	if (WIFEXITED(status))
+		exit_status = WEXITSTATUS(status);
+	return (exit_status);
 }
