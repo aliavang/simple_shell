@@ -1,8 +1,10 @@
 #include "shellbacca.h"
 /**
  * _fork - Create child and execute commands
+ * @path: Absolute path
+ * @args: Argument of tokens
  *
- * Return: Void
+ * Return: EXIT_SUCCESS if successful and EXIT_FAILURE if fail
  */
 int _fork(char *path, char **args)
 {
@@ -24,5 +26,5 @@ int _fork(char *path, char **args)
 	{
 		wait(&status);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
