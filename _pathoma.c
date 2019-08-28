@@ -1,53 +1,10 @@
 #include "shellbacca.h"
-#include <string.h>
-
-int _strlen(char *s)
-{
-        int i = 0;
-
-        while (s[i] != '\0')
-                i++;
-        return (i);
-}
-
-int _strncmp(char *s1, char *s2, int n)
-{
-        int i;
-
-        for (i = 0; i < n; i++)
-        {
-                if (s1[i] != s2[i])
-                        return (1);
-        }
-        return (0);
-}
-
-char *_strcat(char *dest, char *src)
-{
-        int i;
-        int j;
-        for (i = 0; dest[i] != '\0'; i++)
-                ;
-        for (j = 0; src[j] != '\0'; j++, i++)
-        {
-                dest[i] = src[j];
-        }
-        dest[i] = '\0';
-        return (dest);
-}
-
-char *_strcpy(char *dest, char *src)
-{
-        int i;
-
-        for (i = 0; src[i] != '\0'; i++)
-        {
-                dest[i] = src[i];
-        }
-        dest[i] = '\0';
-        return (dest);
-}
-
+/**
+ * _pathoma - Find the path of an arguement
+ * @buff: Argument
+ *
+ * Return: Path to arguement
+ */
 char *_pathoma(char *buff)
 {
         unsigned int i;
