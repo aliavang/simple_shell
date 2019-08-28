@@ -39,7 +39,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 			continue;
 		}
 		if (_strcmp(buff, "exit\n") == 0)
-			break;
+			return (EXIT_SUCCESS);
 		args = strtokenizer(buff, " \n");
 		full_path = _pathoma(buff);
 		_fork(full_path, args);
