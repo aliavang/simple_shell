@@ -11,8 +11,8 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	char *buff = NULL;
 	size_t buff_size = 0;
 	ssize_t chara;
-	char **args;
-	char *full_path;
+	char **args = NULL;
+	char *full_path = NULL;
 	int i = 1;
 
 	while (1)
@@ -38,7 +38,10 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		args = strtokenizer(buff, " \n");
 		full_path = _pathoma(buff);
 		_fork(full_path, args);
+		free(args);
+		free(full_path);
 	}
 	buff = buff - i;
+	free(buff);
 	return (EXIT_SUCCESS);
 }
