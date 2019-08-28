@@ -22,39 +22,79 @@ int _strcmp(char *s1, char *s2)
 	return (0);
 }
 
-#include "shellbacca.h"
 /**
- * _strdup - Duplicate a string to newly allocated space
- * @str: String to be duplicated
+ * _strcpy - entry point
+ * @dest: pointer to an arryay
+ * @src: pointer to an array
  *
- * Return: Pointer to newly allocated space
+ * Description: copy a string
+ * Return: dest
  */
-char *_strdup(char *str)
+char *_strcpy(char *dest, char *src)
 {
-	char *p_str;
-	int index, len;
+        int i;
 
-	if (str == NULL)
+        for (i = 0; src[i] != '\0'; i++)
+        {
+                dest[i] = src[i];
+        }
+        dest[i] = '\0';
+        return (dest);
+}
+/**
+ * _strlen - entry point
+ * @s: parameter for strings
+ *
+ * Description: returns the length of a string
+ * Return: a value
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+/**
+ * _strncmp - Comapres two strings up to a certain character
+ * @s1: String one
+ * @s2: String two
+ * @n: number of characters need to be compared
+ *
+ * Return: the number of the characters counted
+ */
+int _strncmp(char *s1, char *s2, int n)
+{
+	int i;
+	int counter = 0;
+
+	for (i = 0; i < n; i++)
 	{
-		return (NULL);
+		if (s1[i] == s2[i])
+			counter += 1;
 	}
-	len = 0;
-	while (str[len] != '\0')
+	return (counter);
+}
+/**
+ * _strcat - Glue two strings together
+ * @dest: String one
+ * @src: String two
+ *
+ * Return: Pointer to dest
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	int i;
+	int j;
+
+	for (i = 0; dest[i] != '\0'; i++)
+		;
+	for (j = 0; src[j] != '\0'; j++, i++)
 	{
-		len++;
+		dest[i] = src[j];
 	}
-	len = len + 1;
-	p_str = malloc(sizeof(char) * len);
-	if (p_str == NULL)
-	{
-		return (NULL);
-	}
-	index = 0;
-	while (str[index] != '\0')
-	{
-		p_str[index] = str[index];
-		index++;
-	}
-	p_str[index] = '\0';
-	return (p_str);
+	dest[i] = '\0';
+	return (dest);
 }

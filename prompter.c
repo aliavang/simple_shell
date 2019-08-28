@@ -1,6 +1,6 @@
 #include "shellbacca.h"
 
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *buff = NULL;
         size_t buff_size = 0;
@@ -32,7 +32,12 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		full_path = _pathoma(buff);
 			buff = NULL;
 		childPid = fork();
-		if (childPid == 0)
+		if (childPid == -1)
+    {
+      perror("Error:");
+      return (EXIT_FAILURE);
+    }
+    (childPid == 0)
 		{
 			execve(full_path, args, NULL);
 			exit (1);
