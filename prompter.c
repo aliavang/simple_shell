@@ -19,7 +19,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	{
 		if (isatty(STDIN_FILENO) == 1)
 		{
-			write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 28);
+			write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 27);
 		}
 		chara = getline(&buff, &buff_size, stdin);
 		while (*buff == ' ')
@@ -30,7 +30,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		{
 			if (isatty(STDIN_FILENO) == 1)
 				_putchar('\n');
-			free(buff);
+			/*free(buff);*/
 			return (EXIT_SUCCESS);
 		}
 		if (_strcmp(buff, "env\n") == 0)
@@ -43,10 +43,10 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		args = strtokenizer(buff, " \n");
 		full_path = _pathoma(buff);
 		_fork(full_path, args);
-		free(args);
-		free(full_path);
+		/*free(args);
+		free(full_path);*/
 	}
 	buff = buff - i;
-	free(buff);
+	/*free(buff);*/
 	return (EXIT_SUCCESS);
 }
