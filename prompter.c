@@ -7,13 +7,18 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
         ssize_t chara;
 	char **args;
 	pid_t childPid;
-	int status, i = 0;
+	char *full_path;
+	int status, i = 1;
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 27);
 		chara = getline(&buff, &buff_size, stdin);
+		while (*buff == ' ')
+		{	i++;
+			buff++;
+		}
 		if (chara == -1)
 		{
 			free(buff);
@@ -24,10 +29,12 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		if (_strcmp(buff, "exit\n") == 0)
 			break;
 		args = strtokenizer(buff, " \n");
+		full_path = _pathoma(buff);
+			buff = NULL;
 		childPid = fork();
 		if (childPid == 0)
 		{
-			execve(args[0], args, NULL);
+			execve(full_path, args, NULL);
 			exit (1);
 		}
 		else
@@ -35,6 +42,9 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 			wait(&status);
 		}
 	}
-	free(buff);
+	while(i > 0)
+	{	i--;
+		buff--;
+	}
 	return (EXIT_SUCCESS);
 }
