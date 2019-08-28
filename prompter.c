@@ -13,7 +13,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	ssize_t chara;
 	char **args = NULL;
 	char *full_path = NULL;
-	int i = 0;
+	int i = 0, exit_status = 0;
 
 	while (1)
 	{
@@ -30,7 +30,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		{
 			if (isatty(STDIN_FILENO) == 1)
 				_putchar('\n');
-			/*free(buff);*/
 			return (EXIT_SUCCESS);
 		}
 		if (_strcmp(buff, "env\n") == 0)
@@ -38,15 +37,11 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 			_env();
 			continue;
 		}
-		if (_strcmp(buff, "exit\n") == 0)
-			return (EXIT_SUCCESS);
+		_bye(buff, exit_status);
 		args = strtokenizer(buff, " \n");
 		full_path = _pathoma(buff);
-		_fork(full_path, args);
-		/*free(args);
-		free(full_path);*/
+		exit_status = _fork(full_path, args);
 	}
 	buff = buff - i;
-	/*free(buff);*/
-	return (EXIT_SUCCESS);
+	return (exit_status);
 }
