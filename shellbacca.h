@@ -22,7 +22,7 @@ char *_strcat(char *dest, char *src);
 int _putchar(char c);
 char **strtokenizer(char *s, const char *delim);
 int _putchar(char c);
-char* _pathoma(char *buff);
+char *_pathoma(char *buff);
 int _fork(char *path, char **args);
 
 #endif /*SHELLBACCA_H*/
