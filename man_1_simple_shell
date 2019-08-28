@@ -1,4 +1,50 @@
 .TH simple_shell 1 "29 August 2019" "version 0.0.1" "User Commands"
 .SH NAME
-.B simple_shell 
-- a simple UNIX command line interpreter
+.B simple_shell
+\- a simple UNIX command line interpreter
+.SH SYNOPSIS
+.B #include "shellbacca.h"
+.sp
+.B int main(int ac _attribute_((unused)), char **av \_attribute\_((unused)))
+.SH DESCRIPTION
+.B simple_shell
+is a command line interpreter for the system. The current version of simple_shell is the first release. This version has features which mimicks the real shell (sh), but is only a replica of the real shell. 
+.sp
+.B Overview
+.sp
+The simple_shell is a program that reads user input from the stdin and executes the input after interpretation. Commands can be passed in through the command line or through a file. In interactive mode, the simple shell waits for input and in the non-interactive shell commands are piped to the program. Upon executing input, the non-interactive mode will exit by itself. However, in interactive mode, the simple_shell will keep running unless told to exit by user. Flags may be used with commands. Commands may be passed via direct path or indirect: /bin/ls and ls.
+.sp
+.B Invocation
+.sp
+To use the simple_shell interactively, run the executable file in the terminal. It should print the prompt and wait for user input. To exit out of interactive mode, type in exit into the command line. The first argument after the prompt will be the command to be executed.
+.sp
+	simple_shell$ ls
+.sp
+To use the simple_shell non-interactively, echo the command then pipe it to the executable file. It will exit upon running the command, whether the command execution is successful or not.
+.sp
+	user$ echo ls | ./a.out
+.sp
+.B Builtins
+.sp
+This section lists the builtin commands which are builtin because they cannot be performed by a separate process.
+.sp
+-env
+.sp
+	Print environment list of the user to STDOUT.
+.SH EXIT STATUS
+Commands that successfully executes will return EXIT_SUCCESS or 0. Commands that unsuccessfully executes will return EXIT_FAILURE or a non-zero. Unsuccessful executions includes: failure, error, and false indication. Each command has its own exit code and may be checked via the manpage of that command.
+.SH ENVIRONMENT
+.IP HOME
+Set automatically to the user's login directory.
+.sp
+.IP PATH
+The default search path for executables.
+.sp
+.IP PS1
+The primary prompt string, which defaults to "MAY THE FORCE BE WITH YOU$ ".
+.SH BUGS
+No known bugs at the current moment.
+.SH SEE ALOS
+sh(1)
+.SH AUTHORS
+Hanh Nguyen (862@holbertonschool.com), Alia Vang (714@holbertonschool.com)
