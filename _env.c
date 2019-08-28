@@ -8,11 +8,10 @@
 void _env(void)
 {
 	int i;
-	char **env = environ;
 
-	for (i = 0; env[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		write(STDOUT_FILENO, env[i], _strlen(env[i]));
+		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 		_putchar('\n');
 	}
 }
