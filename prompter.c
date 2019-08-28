@@ -26,7 +26,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		{	i++;
 			buff++;
 		}
-		if (chara == -1)
+		if (chara == EOF)
 		{
 			free(buff);
 			return (EXIT_SUCCESS);
