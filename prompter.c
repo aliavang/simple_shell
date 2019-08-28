@@ -1,5 +1,11 @@
 #include "shellbacca.h"
-
+/**
+ * main - Entry point for shell
+ * @ac: Argument count
+ * @av: Argument stirngs
+ *
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE on fail
+ */
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *buff = NULL;
@@ -13,7 +19,9 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
+		{
 			write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 27);
+		}
 		chara = getline(&buff, &buff_size, stdin);
 		while (*buff == ' ')
 		{	i++;
@@ -33,11 +41,11 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 			buff = NULL;
 		childPid = fork();
 		if (childPid == -1)
-    {
-      perror("Error:");
-      return (EXIT_FAILURE);
-    }
-    (childPid == 0)
+		{
+			perror("Error:");
+			return (EXIT_FAILURE);
+		}
+		else if (childPid == 0)
 		{
 			execve(full_path, args, NULL);
 			exit (1);
