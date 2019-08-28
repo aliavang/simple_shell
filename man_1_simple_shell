@@ -3,7 +3,7 @@
 .B simple_shell
 \- a simple UNIX command line interpreter
 .SH SYNOPSIS
-.B #include "shellbacca.h"
+.B #include \(dqshellbacca.h\(dq
 .sp
 .B int main(int ac _attribute_((unused)), char **av \_attribute\_((unused)))
 .SH DESCRIPTION
