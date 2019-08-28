@@ -9,8 +9,8 @@
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *buff = NULL;
-        size_t buff_size = 0;
-        ssize_t chara;
+	size_t buff_size = 0;
+	ssize_t chara;
 	char **args;
 	pid_t childPid;
 	char *full_path;
@@ -37,7 +37,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		if (_strcmp(buff, "exit\n") == 0)
 			break;
 		args = strtokenizer(buff, " \n");
-		full_path = _pathoma(buff);
+		full_path = _pathoma(args[0]);
 			buff = NULL;
 		childPid = fork();
 		if (childPid == -1)
@@ -48,14 +48,14 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		else if (childPid == 0)
 		{
 			execve(full_path, args, NULL);
-			exit (1);
+			exit(1);
 		}
 		else
 		{
 			wait(&status);
 		}
 	}
-	while(i > 0)
+	while (i > 0)
 	{	i--;
 		buff--;
 	}
