@@ -1,0 +1,4 @@
+.TH simple_shell 1 "29 August 2019" "version 0.0.1" "User Commands"
+.SH NAME
+.B simple_shell 
+- a simple UNIX command line interpreter
