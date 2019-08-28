@@ -23,6 +23,7 @@ The prompt should print out onto the terminal shortly after launching. In the ca
 To exit, simply type in `exit`.
 * Non-interactive mode may be ran by piping the command into the program like so:
 `echo ls | ./a.out`
+
 After executing the command, the program will exit.
 ### Built-Ins
  Command | Description
