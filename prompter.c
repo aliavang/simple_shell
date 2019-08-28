@@ -32,7 +32,10 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 			return (EXIT_SUCCESS);
 		}
 		if (_strcmp(buff, "env\n") == 0)
+		{
 			_env();
+			continue;
+		}
 		if (_strcmp(buff, "exit\n") == 0)
 			break;
 		args = strtokenizer(buff, " \n");
