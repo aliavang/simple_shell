@@ -9,11 +9,9 @@ char *_pathoma(char *buff)
 {
 	unsigned int i;
 	int string_compare;
-	char *second_path;
-	char *search_token;
-	char *full_path;
+	char *second_path = NULL, *search_token = NULL;
+	char *full_path = NULL, *alternatepath = NULL;
 	int size;
-	char *alternatepath;
 	struct stat mystat;
 
 	i = 0;
@@ -28,8 +26,10 @@ char *_pathoma(char *buff)
 			if (second_path == NULL)
 				return (NULL);
 			search_token = strtok(second_path, ":");
-			size = _strlen((buff) + _strlen(search_token) + 1);
+			size = _strlen(buff) + _strlen(search_token) + 1;
 			full_path = malloc(sizeof(char) * size);
+			if (full_path == NULL)
+				return (NULL);
 			while ((search_token = strtok(NULL, ":")))
 			{
 				full_path[0] = '\0';
@@ -37,10 +37,14 @@ char *_pathoma(char *buff)
 				_strcat(full_path, "/");
 				_strcat(full_path, buff);
 				if (stat(full_path, &mystat) == 0)
+				{
+					free(alternatepath);
 					return (full_path);
+				}
 			}
 		}
 		i++;
 	}
+	free(alternatepath);
 	return (buff);
 }
