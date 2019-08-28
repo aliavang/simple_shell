@@ -12,6 +12,7 @@
 extern char **environ;
 
 void _env(void);
+void _bye(char *buff, int exit_status);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 int tokcount(char *s, const char *delim);
