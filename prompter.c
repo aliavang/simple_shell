@@ -19,7 +19,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	{
 		if (isatty(STDIN_FILENO) == 1)
 		{
-			write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 27);
+			write(STDOUT_FILENO, "MAY THE FORCE BE WITH YOU$ ", 28);
 		}
 		chara = getline(&buff, &buff_size, stdin);
 		while (*buff == ' ')
@@ -28,6 +28,8 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		}
 		if (chara == EOF)
 		{
+			if (isatty(STDIN_FILENO) == 1)
+				_putchar('\n');
 			free(buff);
 			return (EXIT_SUCCESS);
 		}
