@@ -13,7 +13,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	ssize_t chara;
 	char **args = NULL;
 	char *full_path = NULL;
-	int i = 1;
+	int i = 0;
 
 	while (1)
 	{
