@@ -8,7 +8,7 @@
 .B int main(int ac _attribute_((unused)), char **av \_attribute\_((unused)))
 .SH DESCRIPTION
 .B simple_shell
-is a command line interpreter for the system. The current version of simple_shell is the first release. This version has features which mimicks the real shell (sh), but is only a replica of the real shell. 
+is a command line interpreter for the system. The current version of simple_shell is the first release. This version has features which mimicks the real shell (sh), but is only a replica of the real shell.
 .sp
 .B Overview
 .sp
