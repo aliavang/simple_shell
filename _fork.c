@@ -21,7 +21,7 @@ int _fork(char *path, char **args)
 	else if (childPid == 0)
 	{
 		execve(path, args, NULL);
-		exit (1);
+		exit(1);
 	}
 	else
 	{
